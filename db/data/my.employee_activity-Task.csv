@@ -1,0 +1,8 @@
+ID,Task_ID,Title,Description,Priority,Status,Completion_percentage,Srart_date,End_date,employee_t_Employee_ID
+ckw6e8gmr0000kfs9a5g30p6b,118001,"Develop Login Feature","Create a secure login feature for the application.","High","In Progress",50,"2024-01-01","2024-01-15",101
+ckw6e8gmr0000kfs9a5g30p6f,118002,"Project Kickoff Meeting","Conduct the kickoff meeting with stakeholders.","Medium","Completed",100,"2024-01-02","2024-01-02",101
+ckw6e8gmr0000kfs9a5g30p6g,118003,"Data Analysis for Q1 Report","Analyze data trends for the first quarter report.","Low","Pending",0,"2024-01-05","2024-01-20",101
+ckw6e8gmr0000kfs9a5g30p6a,118002,"Project Kickoff Meeting","Conduct the kickoff meeting with stakeholders.","Medium","Completed",100,"2024-01-02","2024-01-02",102
+ckw6e8gmr0000kfs9a5g30p6c,118003,"Data Analysis for Q1 Report","Analyze data trends for the first quarter report.","Low","Pending",0,"2024-01-05","2024-01-20",103
+ckw6e8gmr0000kfs9a5g30p6d,118004,"Redesign Homepage","Create a new design for the homepage.","High","In Progress",30,"2024-01-10","2024-01-30",104
+ckw6e8gmr0000kfs9a5g30p7e,118005,"Setup CI/CD Pipeline","Implement CI/CD pipeline for deployment.","High","Pending",0,"2024-01-15","2024-02-15",105

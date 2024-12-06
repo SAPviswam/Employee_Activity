@@ -1,0 +1,6 @@
+Employee_ID,Password,Name,Job_Title,Department,Email,Phone,Role
+101,As001,Alice Johnson,Software Engineer,IT,alice.johnson@example.com,+1234567890,Lead
+102,As002,Bob Smith,Software Engineer,Management,bob.smith@example.com,+1234567891,Team member
+103,As003,Charlie Brown,Software Engineer,Analytics,charlie.brown@example.com,+1234567892,Team member
+104,As004,Diana Prince,Software Engineer,Design,diana.prince@example.com,+1234567893,Team member
+105,As005,Ethan Hunt,Software Engineer,IT,ethan.hunt@example.com,+1234567894,Team member

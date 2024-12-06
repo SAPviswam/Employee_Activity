@@ -1,0 +1,34 @@
+<mvc:View controllerName="com.app.employeeactivity.controller.Home"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt">
+    	<ScrollContainer id="idScrollContainer1" vertical="true" height="100%" class="pageContainer">
+       		<tnt:ToolHeader id="shellLikeToolHeaderOnlyMandatoryControls" class="sapUiTinyMargin sapUiLargeMarginTop toolheadercontainer1">
+
+			<Title id="applicationTitle" text="Employee Activity" wrapping="false" class="toolheadercontainer1title" >
+				<layoutData>
+					<OverflowToolbarLayoutData id="Overflowtoolbar1" priority="Disappear"/>
+				</layoutData>
+			</Title>
+			<ToolbarSpacer id="idToolbarSpacer1"/>
+			<Link id="idAboutLink" press=".onAbout" text="About " tooltip="About" class="links">
+				<layoutData>
+					<OverflowToolbarLayoutData id="Overflowtoolbar2" priority="NeverOverflow"/>
+				</layoutData>
+			</Link>
+			<Link id="idSignUpLink" press=".onSignup" text="Sign Up" tooltip="Sign Up" class="links">
+				<layoutData>
+					<OverflowToolbarLayoutData id="Overflowtoolbar3" priority="NeverOverflow"/>
+				</layoutData>
+			</Link>
+		</tnt:ToolHeader>
+		<HBox id="idCredentialsinputHbox" class="credentialsinputHbox" alignContent="Center" justifyContent="Center">
+		<VBox id="idInputFields" width="350px"
+                            alignItems="Center"
+                            justifyContent="Center">
+		<Input id="input1" placeholder="Enter text" class="transparent-input"/>
+        <Input id="input2" placeholder="Another input" class="transparent-input"/>
+		</VBox>
+		</HBox>
+	</ScrollContainer>  
+</mvc:View>

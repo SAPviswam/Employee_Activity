@@ -1,0 +1,28 @@
+/* Enter your custom styles here */
+.pageContainer {
+    /* background-color: rgba(5, 94, 150, 0.664); */
+    background-image: url(https://employerbranding.markivis.com/wp-content/uploads/2020/04/background.jpg);
+}
+
+.toolheadercontainer1 {
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.toolheadercontainer1title {
+    color:transparent;
+    font-size: xx-large;
+    background: linear-gradient(to left, rgb(255, 255, 255), rgb(29, 154, 243));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.links{
+    color:transparent;  
+    background:linear-gradient(to left, rgb(246, 123, 15), rgb(235, 241, 245));
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-decoration: none !important;
+}
+.credentialsinputHbox{
+padding-top: 150px;
+}
