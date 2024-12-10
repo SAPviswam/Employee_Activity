@@ -2,6 +2,9 @@
 .pageContainer {
     /* background-color: rgba(5, 94, 150, 0.664); */
     background-image: url(https://employerbranding.markivis.com/wp-content/uploads/2020/04/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .toolheadercontainer1 {
@@ -23,6 +26,35 @@
     background-clip: text;
     text-decoration: none !important;
 }
+.loginActionbutton{
+    color:transparent;  
+    background:linear-gradient(to top, rgb(4, 109, 185), rgb(255, 255, 255));
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-decoration: none !important;
+}
 .credentialsinputHbox{
 padding-top: 150px;
+}
+.signupcredentialsinputHbox{
+    padding-top: 120px;
+}
+
+.transparent-input {
+    background: transparent !important; /* Ensure background is transparent */
+    border: none !important;            /* Remove border */
+    box-shadow: none !important;        /* Remove box shadow */
+    color: white;                       /* Default text color to white */
+}
+
+.transparent-input:not(:placeholder-shown) {
+    color: white;                       /* Keep text color white when not empty */
+}
+.signupdetailsbutton{
+    background:linear-gradient(to top, rgb(54, 153, 240), white);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    color:rgb(3, 0, 0);
+    border-radius: 0.4rem;
+    border-color: rgb(251, 251, 249);
 }

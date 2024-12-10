@@ -1,34 +1,350 @@
-<mvc:View controllerName="com.app.employeeactivity.controller.Home"
+<mvc:View
+    controllerName="com.app.employeeactivity.controller.Home"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:tnt="sap.tnt">
-    	<ScrollContainer id="idScrollContainer1" vertical="true" height="100%" class="pageContainer">
-       		<tnt:ToolHeader id="shellLikeToolHeaderOnlyMandatoryControls" class="sapUiTinyMargin sapUiLargeMarginTop toolheadercontainer1">
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+>
+    <ScrollContainer
+        id="page1"
+        vertical="true"
+        height="100%"
+        class="pageContainer"
+        visible="true"
+    >
+        <tnt:ToolHeader
+            id="shellLikeToolHeaderOnlyMandatoryControls"
+            class="sapUiTinyMargin sapUiLargeMarginTop toolheadercontainer1"
+        >
+            <Title
+                id="applicationTitle"
+                text="Employee Activity"
+                wrapping="false"
+                class="toolheadercontainer1title"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        id="Overflowtoolbar1"
+                        priority="Disappear"
+                    />
+                </layoutData>
+            </Title>
+            <ToolbarSpacer id="idToolbarSpacer1" />
+            <Link
+                id="idAboutLink"
+                press=".onAbout"
+                text="About "
+                tooltip="About"
+                class="links sapUiTinyMarginEnd"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        id="Overflowtoolbar2"
+                        priority="NeverOverflow"
+                    />
+                </layoutData>
+            </Link>
+            <Link
+                id="idSignUpLink"
+                press="onSignup"
+                text="Sign Up"
+                tooltip="Sign Up"
+                class="links sapUiMediumMarginEnd"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        id="Overflowtoolbar3"
+                        priority="NeverOverflow"
+                    />
+                </layoutData>
+            </Link>
+        </tnt:ToolHeader>
+        <HBox
+            id="idCredentialsinintHbox"
+            class="credentialsinputHbox"
+            alignContent="Center"
+            justifyContent="Center"
+        >
+            <VBox
+                id="idInputFields"
+                width="350px"
+                alignItems="Center"
+                justifyContent="Center"
+            >
+                <Input
+                    id="input1"
+                    placeholder="Enter text"
+                    type="Text"
+                    class="transparent-input"
+                />
+                <Input
+                    id="input2"
+                    placeholder="Password"
+                    type="Password"
+                    class="transparent-input"
+                />
+                <Link
+                    id="idSignin"
+                    text="Sign in"
+                    class="loginActionbutton sapUiTinyMarginTop"
+                    press="onPressSignIn"
+                />
+                <Link
+                    id="idForgotPassword"
+                    text="Forgot Password"
+                    class="loginActionbutton"
+                />
+            </VBox>
+        </HBox>
+        <Table
 
-			<Title id="applicationTitle" text="Employee Activity" wrapping="false" class="toolheadercontainer1title" >
-				<layoutData>
-					<OverflowToolbarLayoutData id="Overflowtoolbar1" priority="Disappear"/>
-				</layoutData>
-			</Title>
-			<ToolbarSpacer id="idToolbarSpacer1"/>
-			<Link id="idAboutLink" press=".onAbout" text="About " tooltip="About" class="links">
-				<layoutData>
-					<OverflowToolbarLayoutData id="Overflowtoolbar2" priority="NeverOverflow"/>
-				</layoutData>
-			</Link>
-			<Link id="idSignUpLink" press=".onSignup" text="Sign Up" tooltip="Sign Up" class="links">
-				<layoutData>
-					<OverflowToolbarLayoutData id="Overflowtoolbar3" priority="NeverOverflow"/>
-				</layoutData>
-			</Link>
-		</tnt:ToolHeader>
-		<HBox id="idCredentialsinputHbox" class="credentialsinputHbox" alignContent="Center" justifyContent="Center">
-		<VBox id="idInputFields" width="350px"
-                            alignItems="Center"
-                            justifyContent="Center">
-		<Input id="input1" placeholder="Enter text" class="transparent-input"/>
-        <Input id="input2" placeholder="Another input" class="transparent-input"/>
-		</VBox>
-		</HBox>
-	</ScrollContainer>  
+            id="idEmployeeTable"
+
+            inset="false"
+
+            items="{
+
+            path: '/Employee'
+
+        }"
+        mode="MultiSelect"
+
+        >
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title
+								text="Documents"
+								level="H2"
+						/>
+						<ToolbarSpacer />
+						
+						<SearchField
+                        width="20%"
+                        liveChange="onSearch"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                priority="NeverOverflow"
+                            />
+                        </layoutData>
+                    </SearchField>
+                    <ToolbarSeparator />
+					
+                    <Button
+                        id="downloadSelectedButton"
+                        text="Delete"
+                        press="onPressDeleteEmployee"
+                        type="Reject"
+                    />
+                    
+                    <Button
+                        id="removeDocumentButton"
+                        text="Remove"
+                        press="onRemoveButtonPress"
+                        enabled="false"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                priority="AlwaysOverflow"
+                            />
+                        </layoutData>
+                    </Button>
+                    <Button
+                        id="renameButton"
+                        enabled="false"
+                        press="onRenameDocument"
+                        text="Rename"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                priority="AlwaysOverflow"
+                            />
+                        </layoutData>
+                    </Button>
+                
+					</OverflowToolbar>
+				</headerToolbar>
+
+            <infoToolbar>
+
+                <OverflowToolbar>
+
+                    <Label text="Employee Information" />
+
+                </OverflowToolbar>
+
+            </infoToolbar>
+
+            <columns>
+
+                <Column width="12em">
+
+                    <Text text="Employee ID" />
+
+                </Column>
+
+                <Column>
+
+                    <Text text="Name" />
+
+                </Column>
+
+            </columns>
+
+            <items>
+
+                <ColumnListItem vAlign="Middle">
+
+                    <cells>
+
+                        <Text text="{Employee_ID}" />
+
+                        <Text text="{Name}" />
+
+                    </cells>
+
+                </ColumnListItem>
+
+            </items>
+
+        </Table>
+    </ScrollContainer>
+    <ScrollContainer
+        id="page2"
+        horizontal="false"
+        vertical="true"
+        height="100%"
+        class="sapUiContentPadding pageContainer"
+        visible="false"
+    >
+        <HBox
+            id="idCredentialsignuptHbox"
+            class="signupcredentialsinputHbox"
+            alignContent="Center"
+            justifyContent="Center"
+        >
+            <VBox
+                id="idSignupInputFields"
+                width="350px"
+                alignItems="Center"
+                justifyContent="Center"
+            >
+                <Input
+                    id="idSignupInput0"
+                    placeholder="Employee ID"
+                    value="{form>/Employee_ID}"
+                />
+                <Input
+                    id="idSignupInput1"
+                    placeholder="Name"
+                    value="{form>/Name}"
+                />
+                <!-- <Input id="idSignupInput2" placeholder="Job_Title"/> -->
+                <!-- <Input id="idSignupInput3" placeholder="Department"/> -->
+                <Input
+                    id="idSignupInput2"
+                    placeholder="Email"
+                    value="{form>/Email}"
+                />
+                <Input
+                    id="idSignupInput3"
+                    placeholder="Phone"
+                    value="{form>/Phone}"
+                />
+                <Input
+                    id="idSignupInput4"
+                    placeholder="Password"
+                    value="{form>/Password}"
+                    type="Password"
+                    autocomplete="false"
+                />
+                <Input
+                    id="idSignupInput5"
+                    placeholder="Confirm Password"
+                    value="{form>/Password}"
+                    type="Password"
+                    autocomplete="false"
+                />
+                <ComboBox
+                    id="idSignupInput6"
+                    placeholder="Role"
+                    value="{form>/Role}"
+                    width="11rem"
+                >
+                    <core:Item
+                        key="Lead"
+                        text="Lead"
+                    />
+                    <core:Item
+                        key="TeamMember"
+                        text="Team Member"
+                    />
+                </ComboBox>
+                <ComboBox
+                    id="idSignupInput7"
+                    placeholder="Job Title"
+                    value="{form>/Job_Title}"
+                    width="11rem"
+                >
+                    <core:Item
+                        key="Consultant"
+                        text="Consultant"
+                    />
+                    <core:Item
+                        key="Lead Consultant"
+                        text="Lead Consultant"
+                    />
+                    <core:Item
+                        key="SeniorConsultant"
+                        text="Senior Consultant"
+                    />
+                    <core:Item
+                        key="AssociateConsultant"
+                        text="Associate Consultant"
+                    />
+                    <core:Item
+                        key="FunctionalConsultant"
+                        text="Functional Consultant"
+                    />
+                </ComboBox>
+                <ComboBox
+                    id="idSignupInput8"
+                    placeholder="Department"
+                    value="{form>/Department}"
+                    width="11rem"
+                >
+                    <core:Item
+                        key="BTP"
+                        text="BTP"
+                    />
+                    <core:Item
+                        key="Functional"
+                        text="Functional"
+                    />
+                    <core:Item
+                        key="Technical"
+                        text="Technical"
+                    />
+                </ComboBox>
+                <HBox id="idSignupPageActionBtns">
+                    <Button
+                        id="idSignUp"
+                        press="onPresscreateSignUp"
+                        text="Sign Up"
+                        type="Unstyled"
+                        class="signupdetailsbutton sapUiTinyMarginTop sapUiTinyMarginEnd"
+                        width="5rem"
+                    />
+                    <Button
+                        id="idBacktoLogin"
+                        press="onPressBacktopg1"
+                        text="Previous"
+                        type="Unstyled"
+                        class="signupdetailsbutton sapUiTinyMarginTop"
+                        width="5rem"
+                    />
+                </HBox>
+            </VBox>
+        </HBox>
+    </ScrollContainer>
 </mvc:View>

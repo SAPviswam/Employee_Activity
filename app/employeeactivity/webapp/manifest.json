@@ -23,6 +23,14 @@
           "annotations": [],
           "odataVersion": "4.0"
         }
+      },
+      "mainServiceV2": {
+        "uri": "/v2/odata/v4/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "2.0"
+        }
       }
     },
     "crossNavigation": {
@@ -83,6 +91,16 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+
+      "ModelV2": {
+        "dataSource": "mainServiceV2",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       }
     },
     "resources": {
@@ -110,42 +128,12 @@
           "target": [
             "TargetHome"
           ]
-        },
-        {
-          "name": "detail1",
-          "pattern": "detail1",
-          "target": "detail1"
-        },
-        {
-          "name": "detail2",
-          "pattern": "detail2",
-          "target": "detail2"
-        },
-        {
-          "name": "detail3",
-          "pattern": "detail3",
-          "target": "detail3"
         }
       ],
       "targets": {
         "TargetHome": {
           "id": "Home",
           "name": "Home"
-        },
-        "detail1": {
-          "viewName": "Detail1",
-          "viewType": "XML",
-          "viewId": "detail1"
-        },
-        "detail2": {
-          "viewName": "Detail2",
-          "viewType": "XML",
-          "viewId": "detail2"
-        },
-        "detail3": {
-          "viewName": "Detail3",
-          "viewType": "XML",
-          "viewId": "detail3"
         }
       }
     },

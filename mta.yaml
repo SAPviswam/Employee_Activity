@@ -1,0 +1,97 @@
+_schema-version: 3.3.0
+ID: Employee_Activity
+description: A simple CAP project.
+version: 1.0.0
+modules:
+  - name: Employee_Activity-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: Employee_Activity-db
+      - name: uaa_Employee_Activity
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    parameters:
+      buildpack: nodejs_buildpack
+      readiness-health-check-http-endpoint: /health
+      readiness-health-check-type: http
+    build-parameters:
+      builder: npm
+  - name: Employee_Activity-db-deployer
+    type: hdb
+    path: gen/db
+    requires:
+      - name: Employee_Activity-db
+    parameters:
+      buildpack: nodejs_buildpack
+  - name: Employee_Activity-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: Employee_Activity-destination-service
+        parameters:
+          content-target: true
+      - name: Employee_Activity_html_repo_host
+        parameters:
+          service-key:
+            name: Employee_Activity_html_repo_host-key
+      - name: uaa_Employee_Activity
+        parameters:
+          service-key:
+            name: uaa_Employee_Activity-key
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: Employee_Activity_Employee_Activity_html_repo_host
+              ServiceInstanceName: Employee_Activity-html5-app-host-service
+              ServiceKeyName: Employee_Activity_html_repo_host-key
+              sap.cloud.service: Employee_Activity
+            - Authentication: OAuth2UserTokenExchange
+              Name: Employee_Activity_uaa_Employee_Activity
+              ServiceInstanceName: Employee_Activity-xsuaa-service
+              ServiceKeyName: uaa_Employee_Activity-key
+              sap.cloud.service: Employee_Activity
+          existing_destinations_policy: ignore
+    build-parameters:
+      no-source: true
+resources:
+  - name: Employee_Activity-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: Employee_Activity-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: true
+        version: 1.0.0
+      service: destination
+      service-name: Employee_Activity-destination-service
+      service-plan: lite
+  - name: Employee_Activity_html_repo_host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: Employee_Activity-html5-app-host-service
+      service-plan: app-host
+  - name: uaa_Employee_Activity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: Employee_Activity-xsuaa-service
+      service-plan: application
+      config:
+        xsappname: Employee_Activity-${org}-${space}
+        tenant-mode: dedicated
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
